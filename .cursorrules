@@ -1,0 +1,18 @@
+# Soc Ops Checklist & Workspace Rules
+
+## ✅ Mandatory Checklist
+- [ ] **Lint & Format**: `uv run ruff check .` & `uv run ruff format .`
+- [ ] **Test**: `uv run pytest`
+- [ ] **Build**: Check `pyproject.toml` metadata
+
+## 🚀 Project Summary
+Social Bingo (FastAPI + Jinja2 + Vanilla CSS/JS).
+- `app/`: Logic (`main`, `models`, `game_logic`, `game_service`) + Frontend (`templates`, `static`).
+- `tests/`: Pytest suite.
+- `workshop/`: Lab guides.
+
+## 📜 Rules
+- Use only `app/static/css` utility classes.
+- Maintain semantic HTML in templates.
+- Map all endpoints to `models.py` Pydantic models.
+- Use strict Python type hints.
