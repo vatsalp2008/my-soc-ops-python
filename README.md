@@ -1,12 +1,42 @@
-# Soc Ops
+# 🎲 Soc Ops: Social Bingo
 
-Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
+### Turn Networking into a Game! 🚀
 
-🎮 **[Play the Game](https://madebygps.github.io/vscode-github-copilot-agent-lab/)** • 📚 **[View Lab Guide](https://madebygps.github.io/vscode-github-copilot-agent-lab/docs/)**
+**Soc Ops** is a modern, interactive Social Bingo game designed for in-person mixers and networking events. Find people who match the fun questions on your board and be the first to get 5 in a row!
+
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Python](https://img.shields.io/badge/Python-3.13+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Jinja2](https://img.shields.io/badge/Jinja2-B41717?style=for-the-badge&logo=jinja&logoColor=white)](https://jinja.palletsprojects.com/)
 
 ---
 
-## 📚 Lab Guide
+## ✨ Features
+
+- **Dynamic Board Generation**: No two boards are the same! Questions are shuffled for every player.
+- **Mobile-First Design**: Optimized for playing on your phone while you mingle.
+- **Instant Bingo Check**: Automatically detects when you've won.
+- **Interactive UI**: Powered by HTMX for smooth, no-refresh gameplay.
+
+---
+
+## 📸 Preview
+
+![Social Bingo Home Page](/Users/vatsalp/.gemini/antigravity/brain/6aaf84a6-0467-4738-b45a-a0c2abb64210/social_bingo_home_page_1773785821533.png)
+
+---
+
+## 🕹 How to Play
+
+1.  **Start Your Game**: Click "Start Game" to get your unique bingo board.
+2.  **Find Matches**: Talk to people! If someone matches a square (e.g., "Has a cat"), tap that square.
+3.  **Get 5 in a Row**: Mark five squares in a row (horizontal, vertical, or diagonal).
+4.  **Win!**: The game will announce your Bingo!
+
+---
+
+## 📚 Lab Guide & Workshop
+
+This project is part of the [GitHub Copilot Agent Lab](https://madebygps.github.io/vscode-github-copilot-agent-lab/).
 
 | Part | Title |
 |------|-------|
@@ -16,40 +46,29 @@ Social Bingo game for in-person mixers. Find people who match the questions and 
 | [**03**](https://madebygps.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=03-quiz-master) | Custom Quiz Master |
 | [**04**](https://madebygps.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=04-multi-agent) | Multi-Agent Development |
 
-> 📝 Lab guides are also available in the [`workshop/`](workshop/) folder for offline reading.
-
 ---
 
-## Prerequisites
+## 🛠 Setup & Development
 
-- [Python 3.13](https://www.python.org/downloads/) or higher
-- [uv](https://docs.astral.sh/uv/) package manager
+### Prerequisites
+- [Python 3.13+](https://www.python.org/downloads/)
+- [uv](https://docs.astral.sh/uv/) or `pip`
 
-## Setup
-
+### Install Dependencies
 ```bash
-uv sync
+uv sync 
+# OR
+python3 -m venv .venv && source .venv/bin/activate && pip install -e .
 ```
 
-## Run
-
+### Run Locally
 ```bash
 uv run uvicorn app.main:app --reload
 ```
+Visit: [http://localhost:8000](http://localhost:8000)
 
-Then open http://localhost:8000 in your browser.
-
-## Test
-
+### QA Tools
 ```bash
-uv run pytest
+uv run pytest       # Run tests
+uv run ruff check . # Linting
 ```
-
-## Lint
-
-```bash
-uv run ruff check .
-uv run ruff format .
-```
-
-Deploys automatically to GitHub Pages on push to `main`.

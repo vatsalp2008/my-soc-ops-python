@@ -1,0 +1,303 @@
+ANN201 Missing return type annotation for public function `client`
+ --> tests/test_api.py:8:5
+  |
+7 | @pytest.fixture
+8 | def client():
+  |     ^^^^^^
+9 |     return TestClient(app)
+  |
+help: Add return type annotation
+
+ANN201 Missing return type annotation for public function `test_home_returns_200`
+  --> tests/test_api.py:13:9
+   |
+12 | class TestHomePage:
+13 |     def test_home_returns_200(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^
+14 |         response = client.get("/")
+15 |         assert response.status_code == 200
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_home_contains_start_screen`
+  --> tests/test_api.py:17:9
+   |
+15 |         assert response.status_code == 200
+16 |
+17 |     def test_home_contains_start_screen(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+18 |         response = client.get("/")
+19 |         assert "Soc Ops" in response.text
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_home_sets_session_cookie`
+  --> tests/test_api.py:23:9
+   |
+21 |         assert "How to play" in response.text
+22 |
+23 |     def test_home_sets_session_cookie(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+24 |         response = client.get("/")
+25 |         assert "session" in response.cookies
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_start_returns_game_board`
+  --> tests/test_api.py:29:9
+   |
+28 | class TestStartGame:
+29 |     def test_start_returns_game_board(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 |         # First visit to get session
+31 |         client.get("/")
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_board_has_25_squares`
+  --> tests/test_api.py:37:9
+   |
+35 |         assert "← Back" in response.text
+36 |
+37 |     def test_board_has_25_squares(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+38 |         client.get("/")
+39 |         response = client.post("/start")
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_toggle_marks_square`
+  --> tests/test_api.py:45:9
+   |
+44 | class TestToggleSquare:
+45 |     def test_toggle_marks_square(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^
+46 |         client.get("/")
+47 |         client.post("/start")
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_reset_returns_start_screen`
+  --> tests/test_api.py:55:9
+   |
+54 | class TestResetGame:
+55 |     def test_reset_returns_start_screen(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+56 |         client.get("/")
+57 |         client.post("/start")
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_dismiss_returns_game_screen`
+  --> tests/test_api.py:65:9
+   |
+64 | class TestDismissModal:
+65 |     def test_dismiss_returns_game_screen(self, client: TestClient):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+66 |         client.get("/")
+67 |         client.post("/start")
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_board_has_25_squares`
+  --> tests/test_game_logic.py:13:9
+   |
+12 | class TestGenerateBoard:
+13 |     def test_board_has_25_squares(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+14 |         board = generate_board()
+15 |         assert len(board) == 25
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_center_is_free_space`
+  --> tests/test_game_logic.py:17:9
+   |
+15 |         assert len(board) == 25
+16 |
+17 |     def test_center_is_free_space(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+18 |         board = generate_board()
+19 |         center = board[CENTER_INDEX]
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_non_center_squares_are_not_free_space`
+  --> tests/test_game_logic.py:24:9
+   |
+22 |         assert center.text == FREE_SPACE
+23 |
+24 |     def test_non_center_squares_are_not_free_space(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+25 |         board = generate_board()
+26 |         for i, square in enumerate(board):
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_all_questions_from_pool`
+  --> tests/test_game_logic.py:31:9
+   |
+29 |                 assert square.is_marked is False
+30 |
+31 |     def test_all_questions_from_pool(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 |         board = generate_board()
+33 |         texts = {s.text for s in board if not s.is_free_space}
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_squares_have_sequential_ids`
+  --> tests/test_game_logic.py:36:9
+   |
+34 |         assert texts.issubset(set(QUESTIONS))
+35 |
+36 |     def test_squares_have_sequential_ids(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+37 |         board = generate_board()
+38 |         for i, square in enumerate(board):
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_board_is_shuffled`
+  --> tests/test_game_logic.py:41:9
+   |
+39 |             assert square.id == i
+40 |
+41 |     def test_board_is_shuffled(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^
+42 |         """Verify two boards aren't identical (high probability)."""
+43 |         board1 = generate_board()
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_toggle_marks_unmarked_square`
+  --> tests/test_game_logic.py:52:9
+   |
+51 | class TestToggleSquare:
+52 |     def test_toggle_marks_unmarked_square(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+53 |         board = generate_board()
+54 |         square_id = 0
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_toggle_unmarks_marked_square`
+  --> tests/test_game_logic.py:59:9
+   |
+57 |         assert new_board[square_id].is_marked is True
+58 |
+59 |     def test_toggle_unmarks_marked_square(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 |         board = generate_board()
+61 |         board = toggle_square(board, 0)
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_toggle_does_not_affect_free_space`
+  --> tests/test_game_logic.py:66:9
+   |
+64 |         assert board[0].is_marked is False
+65 |
+66 |     def test_toggle_does_not_affect_free_space(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+67 |         board = generate_board()
+68 |         new_board = toggle_square(board, CENTER_INDEX)
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_toggle_returns_new_list`
+  --> tests/test_game_logic.py:71:9
+   |
+69 |         assert new_board[CENTER_INDEX].is_marked is True  # Still marked
+70 |
+71 |     def test_toggle_returns_new_list(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+72 |         board = generate_board()
+73 |         new_board = toggle_square(board, 0)
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_no_bingo_initially`
+  --> tests/test_game_logic.py:95:9
+   |
+93 |         return result
+94 |
+95 |     def test_no_bingo_initially(self):
+   |         ^^^^^^^^^^^^^^^^^^^^^^^
+96 |         board = generate_board()
+97 |         assert check_bingo(board) is None
+   |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_row_bingo`
+   --> tests/test_game_logic.py:99:9
+    |
+ 97 |         assert check_bingo(board) is None
+ 98 |
+ 99 |     def test_row_bingo(self):
+    |         ^^^^^^^^^^^^^^
+100 |         # Mark first row: indices 0-4
+101 |         board = self._make_board({0, 1, 2, 3, 4})
+    |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_column_bingo`
+   --> tests/test_game_logic.py:107:9
+    |
+105 |         assert result.squares == [0, 1, 2, 3, 4]
+106 |
+107 |     def test_column_bingo(self):
+    |         ^^^^^^^^^^^^^^^^^
+108 |         # Mark first column: indices 0, 5, 10, 15, 20
+109 |         board = self._make_board({0, 5, 10, 15, 20})
+    |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_diagonal_bingo`
+   --> tests/test_game_logic.py:115:9
+    |
+113 |         assert result.squares == [0, 5, 10, 15, 20]
+114 |
+115 |     def test_diagonal_bingo(self):
+    |         ^^^^^^^^^^^^^^^^^^^
+116 |         # Mark diagonal: 0, 6, 12, 18, 24 (12 is free space)
+117 |         board = self._make_board({0, 6, 18, 24})
+    |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_partial_line_no_bingo`
+   --> tests/test_game_logic.py:123:9
+    |
+121 |         assert result.squares == [0, 6, 12, 18, 24]
+122 |
+123 |     def test_partial_line_no_bingo(self):
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+124 |         board = self._make_board({0, 1, 2, 3})  # Only 4 of 5 in first row
+125 |         assert check_bingo(board) is None
+    |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_none_line_returns_empty_set`
+   --> tests/test_game_logic.py:129:9
+    |
+128 | class TestGetWinningSquareIds:
+129 |     def test_none_line_returns_empty_set(self):
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+130 |         assert get_winning_square_ids(None) == set()
+    |
+help: Add return type annotation: `None`
+
+ANN201 Missing return type annotation for public function `test_returns_square_ids`
+   --> tests/test_game_logic.py:132:9
+    |
+130 |         assert get_winning_square_ids(None) == set()
+131 |
+132 |     def test_returns_square_ids(self):
+    |         ^^^^^^^^^^^^^^^^^^^^^^^
+133 |         line = BingoLine(type="row", index=0, squares=[0, 1, 2, 3, 4])
+134 |         assert get_winning_square_ids(line) == {0, 1, 2, 3, 4}
+    |
+help: Add return type annotation: `None`
+
+Found 26 errors.
+No fixes available (25 hidden fixes can be enabled with the `--unsafe-fixes` option).
